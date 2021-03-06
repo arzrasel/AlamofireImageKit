@@ -33,6 +33,23 @@ or
 pod 'AlamofireImageKit', '~> 1.0'
 ```
 
+## Usages
+
+```AlamofireImageKitUsages01
+let imageView = UIImageView()
+imageView.onLoadAfImage(from: "image url")
+```
+or
+```AlamofireImageKitUsages01
+let imageView = UIImageView()
+imageView.onLoadAlamofireImage(from: "image url")
+```
+or
+```AlamofireImageKitUsages01
+let imageView = UIImageView()
+imageView.onLoadImage(from: "image url")
+```
+
 ## Author
 
 Md. Rashed - Uz - Zaman (Rz Rasel)
