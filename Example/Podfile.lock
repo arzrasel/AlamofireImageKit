@@ -1,0 +1,16 @@
+PODS:
+  - AlamofireImageKit (0.1.0)
+
+DEPENDENCIES:
+  - AlamofireImageKit (from `../`)
+
+EXTERNAL SOURCES:
+  AlamofireImageKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AlamofireImageKit: cbe2fe708263daefde6899d76625945b433abdf0
+
+PODFILE CHECKSUM: f51b0c6e60cb68d334d25cad15c150ad68e45deb
+
+COCOAPODS: 1.10.1
