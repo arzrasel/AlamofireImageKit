@@ -6,9 +6,16 @@
 //
 
 import Foundation
+import UIKit
 import AlamofireImage
 
 extension UIImageView {
+    public func onLoadAfImage(from urlLocation: String) {
+        onLoadImage(from: urlLocation)
+    }
+    public func onLoadAlamofireImage(from urlLocation: String) {
+        onLoadImage(from: urlLocation)
+    }
     public func onLoadImage(from urlLocation: String) {
         if urlLocation.isEmpty == true {
             return
