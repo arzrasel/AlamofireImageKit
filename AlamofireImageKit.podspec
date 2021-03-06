@@ -5,11 +5,11 @@
 # Any lines starting with a # are optional, but their use is encouraged
 # To learn more about a Podspec see https://guides.cocoapods.org/syntax/podspec.html
 #
-# AlamofireImageKit Version - 1.0.1
+# AlamofireImageKit Version - 1.0.1.01
 
 Pod::Spec.new do |s|
   s.name             = 'AlamofireImageKit'
-  s.version          = '1.0.1'
+  s.version          = '1.0.1.01'
   s.summary          = 'A short description of AlamofireImageKit.'
 
 # This description is used to generate tags and improve search results.
