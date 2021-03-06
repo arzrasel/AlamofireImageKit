@@ -16,6 +16,10 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
+- iOS 11
+- Swift 5
+- Xcode 12
+
 ## Installation
 
 AlamofireImageKit is available through [CocoaPods](https://cocoapods.org/pods/AlamofireImageKit). To install
@@ -23,6 +27,10 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'AlamofireImageKit'
+```
+or
+```podInstallAlamofireImageKit02
+pod 'AlamofireImageKit', '~> 1.0'
 ```
 
 ## Author
