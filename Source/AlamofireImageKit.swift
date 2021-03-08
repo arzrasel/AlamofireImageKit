@@ -31,14 +31,19 @@ extension UIImageView {
         if imgFromCache != nil{
             self.image = imgFromCache
         } else {
-            self.af_setImage(
-                withURL: url,
-                placeholderImage: nil,
-                filter: AspectRatioScaledToWidthFilter(width: self.frame.size.width),
-                completion: { (rs) in
-                    imageCache.add(self.image!, for: urlRequest, withIdentifier: name)
-                }
-            )
+            do {
+                _ = try NSData(contentsOf: url, options: NSData.ReadingOptions())
+                self.af_setImage(
+                    withURL: url,
+                    placeholderImage: nil,
+                    filter: AspectRatioScaledToWidthFilter(width: self.frame.size.width),
+                    completion: { (rs) in
+                        imageCache.add(self.image!, for: urlRequest, withIdentifier: name)
+                    }
+                )
+            } catch {
+                print("ERROR: \(error)")
+            }
         }
     }
     private struct AspectRatioScaledToWidthFilter: ImageFilter {
@@ -52,7 +57,7 @@ extension UIImageView {
         public init(width: CGFloat) {
             self.width = width
         }
-        
+
         /// The filter closure used to create the modified representation of the given image.
         public var filter: (Image) -> Image {
             return { image in
