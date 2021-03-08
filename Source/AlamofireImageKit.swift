@@ -16,7 +16,7 @@ extension UIImageView {
     public func onLoadAlamofireImage(from urlLocation: String) {
         onLoadImage(from: urlLocation)
     }
-    public func onLoadImage(from urlLocation: String) {
+    public func onLoadImage(from urlLocation: String, isCheckImage: Bool = false) {
         if urlLocation.isEmpty == true {
             return
         }
@@ -31,8 +31,21 @@ extension UIImageView {
         if imgFromCache != nil{
             self.image = imgFromCache
         } else {
-            do {
-                _ = try NSData(contentsOf: url, options: NSData.ReadingOptions())
+            if isCheckImage {
+                do {
+                    _ = try NSData(contentsOf: url, options: NSData.ReadingOptions())
+                    self.af_setImage(
+                        withURL: url,
+                        placeholderImage: nil,
+                        filter: AspectRatioScaledToWidthFilter(width: self.frame.size.width),
+                        completion: { (rs) in
+                            imageCache.add(self.image!, for: urlRequest, withIdentifier: name)
+                        }
+                    )
+                } catch {
+                    print("ERROR: \(error)")
+                }
+            } else {
                 self.af_setImage(
                     withURL: url,
                     placeholderImage: nil,
@@ -41,8 +54,6 @@ extension UIImageView {
                         imageCache.add(self.image!, for: urlRequest, withIdentifier: name)
                     }
                 )
-            } catch {
-                print("ERROR: \(error)")
             }
         }
     }
@@ -57,7 +68,7 @@ extension UIImageView {
         public init(width: CGFloat) {
             self.width = width
         }
-
+        
         /// The filter closure used to create the modified representation of the given image.
         public var filter: (Image) -> Image {
             return { image in
